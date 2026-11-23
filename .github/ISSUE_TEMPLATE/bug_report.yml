@@ -1,0 +1,20 @@
+name: Bug report
+description: Report reproducible behavior without private account data
+body:
+  - type: input
+    id: version
+    attributes:
+      label: SyntraChat version and operating system
+    validations:
+      required: true
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps, expected behavior and actual behavior
+      description: Include WebView version if known. Do not include credentials, tokens or profiles.
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Redacted logs or screenshots

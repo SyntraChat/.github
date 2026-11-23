@@ -1,0 +1,32 @@
+name: Reusable Rust checks
+on:
+  workflow_call:
+    inputs:
+      directory:
+        type: string
+        default: '.'
+      linux-native:
+        type: boolean
+        default: false
+permissions:
+  contents: read
+jobs:
+  check:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-latest, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+      - if: runner.os == 'Linux' && inputs.linux-native
+        run: sudo apt-get update && sudo apt-get install -y libwebkit2gtk-4.1-dev libayatana-appindicator3-dev librsvg2-dev patchelf
+      - name: Install Rust
+        run: rustup toolchain install stable --profile minimal --component rustfmt --component clippy
+      - run: cargo +stable fmt --check
+        working-directory: ${{ inputs.directory }}
+      - run: cargo +stable clippy --locked --all-targets -- -D warnings
+        working-directory: ${{ inputs.directory }}
+      - run: cargo +stable test --locked
+        working-directory: ${{ inputs.directory }}
+

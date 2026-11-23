@@ -1,0 +1,13 @@
+name: Feature request
+description: Describe a concrete user need
+body:
+  - type: textarea
+    id: need
+    attributes:
+      label: What task should become easier?
+    validations:
+      required: true
+  - type: textarea
+    id: behavior
+    attributes:
+      label: Proposed behavior, platforms and compatibility constraints
