@@ -8,7 +8,7 @@ foundation. No Electron runtime. No SyntraChat analytics or advertising SDKs.
 
 | Repository | Purpose |
 | --- | --- |
-| [Desktop](https://github.com/SyntraChat/SyntraChat-Desktop-Tauri) | Client, native integrations, compatibility evidence |
+| [Desktop](https://github.com/SyntraChat/SyntraChat) | Client, native integrations, compatibility evidence |
 | [Installer](https://github.com/SyntraChat/SyntraChat-Installer) | Independent Rust installer and release verification |
 | [.github](https://github.com/SyntraChat/.github) | Shared standards and CI workflows |
 
